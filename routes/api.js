@@ -1,10 +1,10 @@
 const express= require('express')
-const router = express.Router
+const router = express.Router()
 const User = require('../models/user')
 
-router.put('/user',function(req,res,next){
-  User.findByIdAndUpdate({email:req.body.email},req.body).then(function(){
-    User.findOne({email:req.body.email}).then(function(user){
+router.put('/user/:id',function(req,res,next){
+  User.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
+    User.findOne({_id:req.params.id}).then(function(user){
       res.send(user)
     })
   })
@@ -28,8 +28,8 @@ router.post('/user/signin',function(req,res,next){
   }).catch(next)
 })
 
-router.delete('/user',function(req,res,next){
-  User.findByIdAndRemove({email:req.body.email}).then(function(user){
+router.delete('/user/:id',function(req,res,next){
+  User.findByIdAndRemove({_id:req.params.id}).then(function(user){
     res.send(user)
   }).catch(next)
 })

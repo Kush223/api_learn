@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 
 
 mongoose.connect('mongodb://localhost/user')
-monggose.Promise=global.Promise;
+mongoose.Promise=global.Promise;
 
 const app= express()
 
